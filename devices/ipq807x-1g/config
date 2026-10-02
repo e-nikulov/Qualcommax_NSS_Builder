@@ -24,6 +24,11 @@ CONFIG_TARGET_PER_DEVICE_ROOTFS=y
 CONFIG_ATH11K_MEM_PROFILE_1G=y
 CONFIG_NSS_MEM_PROFILE_HIGH=y
 
+# Linksys MX4200v2 and MX8500 pull kmod-hci-uart via DEVICE_PACKAGES. In a
+# multi-profile build OpenWrt may try to install it into the per-device rootfs
+# without having built the package first, so select it explicitly for this group.
+CONFIG_PACKAGE_kmod-hci-uart=y
+
 CONFIG_TARGET_DEVICE_qualcommax_ipq807x_DEVICE_aliyun_ap8220=y
 CONFIG_TARGET_DEVICE_qualcommax_ipq807x_DEVICE_arcadyan_aw1000=y
 CONFIG_TARGET_DEVICE_qualcommax_ipq807x_DEVICE_asus_rt-ax89x=y
